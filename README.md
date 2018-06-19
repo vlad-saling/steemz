@@ -1,1 +1,3 @@
-# Something should be here.
+# SteemZ
+
+View multiple Steem accounts at a glance.

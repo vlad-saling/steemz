@@ -2,7 +2,7 @@
   <div id="app">
     <div class="header">
         <div class="container">
-          <h1 id="message">Steem Zero</h1>
+          <h1 id="message">SteemZ</h1>
           <p>Multiple steem account at a glance</p>
 
           <div id="nav">
