@@ -1,5 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="container">
+      <p>Pet project on top of steem.</p>
+    </div>
   </div>
 </template>
