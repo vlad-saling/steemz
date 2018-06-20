@@ -9,7 +9,7 @@
         <input v-model.lazy="newUser" type="text" placeholder="username" /><button type="submit">Add user</button>  {{ actionResult }}
       </form>
 
-      <div class="flex">
+      <div class="flex pt20">
       <div v-for="user in users" class="user" v-bind:key="user.id">
         <span class="avatar" v-bind:style="{ backgroundImage: 'url(' + userImage(user.json_metadata) + ')' }">avatar image</span>
 
@@ -19,12 +19,13 @@
         </h3>
 
         <p class="mt0" style="overflow: hidden">
-          {{ user.post_count }} posts<br />
-          {{ votingPower(user.name, user.last_vote_time , user.voting_power) }}% voting power<br />
-          {{ followers[user.name] }} followers<br />
+          {{ user.post_count }} <small>posts</small><br />
+          {{ votingPower(user.name, user.last_vote_time , user.voting_power) }}% <small>voting power</small><br />
+          {{ followers[user.name] }} <small>followers</small><br />
           <!-- steem -->
           {{ steemPower(user.vesting_shares) }} SP<br />
-            {{ user.sbd_balance }}
+          {{ user.sbd_balance }}<br />
+          {{ user.balance }}
         </p>
 
         <span>Activity: </span>
@@ -192,8 +193,7 @@ export default {
   padding: 8px 10px;
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 40px;
-  margin-top: 20px
+  margin-bottom: 15px;
 }
 
 @media only screen and (min-width: 480px) {
@@ -217,9 +217,10 @@ export default {
   border: 1px solid #ffffff45;
   color: #a7c2d2;
   border-radius: 50%;
-  height: 20px;
-  width: 20px;
+  height: 23px;
+  width: 23px;
   text-align: center;
+  float: right
 }
 
 .feed {

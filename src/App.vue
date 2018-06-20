@@ -82,4 +82,8 @@ h1 + p {
   margin-bottom: 0;
 }
 
+.pt20 {
+  padding-top: 20px;
+}
+
 </style>

@@ -103,8 +103,7 @@ export default {
       } else if (type === 'delegate_vesting_shares') {
         return '<span class=\'delegated\'>delegated</span> ' +
         this.steemPower(data.vesting_shares) +
-        ' SP' +
-        ' from ' +
+        ' SP from ' +
         this.createSteemitAuthorLink(data.delegator) +
         ' to ' +
         this.createSteemitAuthorLink(data.delegatee)
