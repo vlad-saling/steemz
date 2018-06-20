@@ -72,9 +72,15 @@ export default {
     }
   },
   created: function () {
-    if (window.localStorage.getItem('steem-zero-userlist') !== undefined) {
+    if ((window.localStorage.getItem('steem-zero-userlist') !== null) && (window.localStorage.getItem('steem-zero-userlist') !== undefined)) {
       this.userList = window.localStorage.getItem('steem-zero-userlist').split(',')
       this.loadUsername()
+    }
+
+    // add default account if no user is loaded
+    if (this.userList.length === 0) {
+      this.newUser = 'mrakodrap'
+      this.addUser()
     }
 
     STEEM.api.getDynamicGlobalProperties((err, result) => {
@@ -168,17 +174,21 @@ export default {
     },
     steemPower: steemPower,
     userImage (jsonData) {
-      const OBJ = JSON.parse(jsonData)
+      if (jsonData !== '') {
+        const OBJ = JSON.parse(jsonData)
 
-      if ((OBJ.profile !== undefined) && (OBJ.profile.profile_image !== undefined)) {
-        return (OBJ.profile.profile_image)
-      } else {
-        return 'i/steemit.png'
+        if ((OBJ.profile !== undefined) && (OBJ.profile.profile_image !== undefined)) {
+          return (OBJ.profile.profile_image)
+        } else {
+          return 'i/steemit.png'
+        }
       }
     },
     parseCustomJson (jsonData) {
-      const OBJ = JSON.parse(jsonData)
-      return (OBJ[0])
+      if (jsonData !== '') {
+        const OBJ = JSON.parse(jsonData)
+        return (OBJ[0])
+      }
     }
   }
 }
@@ -216,11 +226,17 @@ export default {
   background: black;
   border: 1px solid #ffffff45;
   color: #a7c2d2;
-  border-radius: 50%;
   height: 23px;
   width: 23px;
   text-align: center;
-  float: right
+  float: right;
+  text-transform: uppercase;
+  transition: .2s border-color;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #ffffff85;
+  }
 }
 
 .feed {
