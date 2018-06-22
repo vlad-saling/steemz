@@ -21,7 +21,9 @@ export default {
       author +
       '/' +
       permlink +
-      '\'>' +
+      '\'>@' +
+      author +
+      '/' +
       permlink +
       '</a>'
     },
@@ -43,9 +45,9 @@ export default {
           this.createSteemitPostLink(OBJ[1].author, OBJ[1].permlink)
         } else if (OBJ[0] === 'follow') {
           return '<span class=\'follow\'>' +
-          this.createSteemitAuthorLink(OBJ[0]) +
+          OBJ[0] +
           '</span> ' +
-          OBJ[1].following
+          this.createSteemitAuthorLink(OBJ[1].following)
         }
       } else if (type === 'vote') {
         if ((currentAccount === data.voter) && (data.author === data.voter)) {
@@ -60,7 +62,7 @@ export default {
           this.createSteemitPostLink(data.author, data.permlink)
         } else {
           return '<span class=\'incoming-vote\'>vote ◺</span> ' +
-          data.voter +
+          this.createSteemitAuthorLink(data.voter) +
           ' upvoted ' +
           this.createSteemitPostLink(data.author, data.permlink)
         }
