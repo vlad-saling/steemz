@@ -27,6 +27,17 @@ export default {
       permlink +
       '</a>'
     },
+    createSteemitCommentLink: function (author, permlink, parentPermlink, parentAuthor) {
+      return '<a href=\'https://steemit.com/@' +
+      author +
+      '/' +
+      permlink +
+      '\'>@' +
+      parentAuthor +
+      '/' +
+      parentPermlink +
+      '</a>'
+    },
     createSteemitAuthorLink: function (author) {
       return '<a href=\'https://steemit.com/@' +
       author +
@@ -76,7 +87,7 @@ export default {
           return '<span class=\'comment\'>commnet</span> ' +
           this.createSteemitAuthorLink(data.author) +
           ' commneted on ' +
-          this.createSteemitPostLink(data.author, data.permlink)
+          this.createSteemitCommentLink(data.author, data.permlink, data.parent_permlink, data.parent_author)
         }
       } else if (type === 'claim_reward_balance') {
         return '<span class=\'reward\'>claimed reward</span> ' +
@@ -111,6 +122,10 @@ export default {
         this.createSteemitAuthorLink(data.delegatee)
       } else if (type === 'account_update') {
         return '<span class=\'update\'>account_update</span>'
+      } else if (type === 'producer_reward') {
+        return '<span class=\'reward\'>producer reward</span> ' +
+        this.steemPower(data.vesting_shares) +
+        ' SP'
       } else {
         console.log(type, data)
       }

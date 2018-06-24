@@ -14,7 +14,7 @@
         <span class="avatar" v-bind:style="{ backgroundImage: 'url(' + userImage(user.json_metadata) + ')' }">avatar image</span>
 
         <h3 class="mt0 mb0">
-          {{ user.name }} <span style="font-weight: normal">({{ reputationParser(user.reputation) }})</span>
+          <a v-bind:href="'https://steemit.com/@' +  user.name">{{ user.name }}</a> <span style="font-weight: normal"> ({{ reputationParser(user.reputation) }})</span>
           <button class="remove" v-on:click="removeUser(user.name)">x</button>
         </h3>
 
