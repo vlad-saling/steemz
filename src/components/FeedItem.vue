@@ -110,9 +110,9 @@ export default {
         return '<span class=\'reward\'>transfer</span> ' +
         data.amount +
         ' from ' +
-        data.from +
+        this.createSteemitAuthorLink(data.from) +
         ' to ' +
-        data.to
+        this.createSteemitAuthorLink(data.to)
       } else if (type === 'delegate_vesting_shares') {
         return '<span class=\'delegated\'>delegated</span> ' +
         this.steemPower(data.vesting_shares) +
