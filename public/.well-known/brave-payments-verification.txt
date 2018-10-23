@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: steemz.netlify.com 
+Token: 6a7655e8a0fc540329619488895223285a95fa993eb944c3d9638a4184cd41b4
